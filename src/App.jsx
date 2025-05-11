@@ -4,7 +4,7 @@ function Square({ value, onSquareClick }) {
   return (
     <button
       onClick={onSquareClick}
-      className="border h-12 w-12 text-lg bg-white m-1 shadow-2xl cursor-pointer"
+      className="w-20 h-20 text-3xl font-bold bg-white border border-gray-300 m-1 shadow-md rounded hover:bg-blue-100 transition duration-200"
     >
       {value}
     </button>
@@ -16,9 +16,9 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
 
   if (winner) {
-    status = `Winner: ${winner}`;
+    status = `🏆 Winner: ${winner}`;
   } else {
-    status = `Next Player: ${xIsNext ? "X" : "O"}`;
+    status = `🎮 Next Player: ${xIsNext ? "❌" : "⭕"}`;
   }
 
   function handleClick(i) {
@@ -34,8 +34,8 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
   return (
-    <div>
-      <h2>{status}</h2>
+    <div className="flex flex-col items-center">
+      <h2 className="text-xl font-semibold mb-4">{status}</h2>
       <div>
         <div className="flex">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
@@ -85,18 +85,24 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button
+          onClick={() => jumpTo(move)}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          {description}
+        </button>
       </li>
     );
   });
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-gray-300">
-      <div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col items-center justify-center p-4">
+      <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div>
-        <ol>{moves}</ol>
+      <div className="bg-white rounded-lg shadow p-4 w-full max-w-sm">
+        <h3 className="text-center font-semibold mb-4">Move History</h3>
+        <ol className="space-y-3">{moves}</ol>
       </div>
     </div>
   );
