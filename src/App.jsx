@@ -96,7 +96,7 @@ export default function Game() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-200 flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
