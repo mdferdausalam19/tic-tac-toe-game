@@ -96,12 +96,14 @@ export default function Game() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-200 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-200 flex flex-col lg:flex-row items-center justify-center lg:gap-8 p-4">
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div className="bg-white rounded-lg shadow p-4 w-full max-w-sm">
-        <h3 className="text-center font-semibold mb-4">Move History</h3>
+      <div className="bg-white rounded-lg shadow p-4 w-full max-w-xs max-h-96 overflow-x-auto">
+        <h3 className="text-center font-semibold mb-4 underline">
+          Move History
+        </h3>
         <ol className="space-y-3">{moves}</ol>
       </div>
     </div>
